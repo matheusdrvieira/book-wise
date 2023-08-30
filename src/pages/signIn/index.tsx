@@ -3,7 +3,6 @@ import img from "../../assets/Image.svg";
 import Image from "next/image";
 import { ButtonSignIn } from "../../components/ButtonSignIn";
 
-
 export default function SignIn() {
 
     return (
@@ -13,8 +12,8 @@ export default function SignIn() {
                 <div>
                     <h1>Boas vindas!</h1>
                     <p>Faça seu login ou acesse como visitante.</p>
+                    <ButtonSignIn />
                 </div>
-                <ButtonSignIn />
             </Login>
         </ContainerSignIn>
     )

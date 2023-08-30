@@ -16,7 +16,7 @@ export const ButtonContainer = styled("div", {
 
         "&:hover": {
             background: "$gradient-vertical",
-            color: "#0E1116"
+            color: "$gray800"
         }
     },
 
