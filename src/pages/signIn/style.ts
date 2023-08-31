@@ -4,13 +4,19 @@ export const ContainerSignIn = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    gap: "$4",
 
     padding: "$4",
+
+    img: {
+        width: "37.375rem",
+        height: "55.5rem",
+        objectFit: "cover",
+    }
 })
 
 export const Login = styled("div", {
     width: "100%",
-
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

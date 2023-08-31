@@ -1,8 +1,9 @@
-import { ContainerHome, MainMenu, ButtonMenu } from "./style";
+import { ContainerHome, MainMenu, ButtonMenu, Main } from "./style";
 import logo from "../../assets/LogoType.svg"
 import Image from "next/image";
-import { Binoculars, ChartLineUp, SignIn, User } from "@phosphor-icons/react";
+import { Binoculars, CaretRight, ChartLineUp, SignIn, User } from "@phosphor-icons/react";
 import { Card } from "../../components/Card";
+import { CardVarient } from "../../components/CardVarient";
 
 export default function Home() {
 
@@ -29,10 +30,29 @@ export default function Home() {
                         <SignIn size={24} color="#50B2C0" weight="bold" />
                     </button>}
             </MainMenu>
-
-            <div>
-                <Card />
-            </div>
+            <Main>
+                <div className="title">
+                    <ChartLineUp size={24} color="#50B2C0" weight="bold" />
+                    <h2>Início</h2>
+                </div>
+                <section>
+                    <div className="box">
+                        <p>Avaliações mais recentes</p>
+                        <Card />
+                        <Card />
+                        <Card />
+                    </div>
+                    <div className="box">
+                        <div className="info">
+                            <p>Livros populares</p>
+                            <span>Ver todos <CaretRight size={16} weight="bold" /></span>
+                        </div>
+                        <CardVarient />
+                        <CardVarient />
+                        <CardVarient />
+                    </div>
+                </section>
+            </Main>
         </ContainerHome >
     )
 }

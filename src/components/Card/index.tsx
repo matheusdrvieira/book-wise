@@ -26,10 +26,10 @@ export function Card() {
 
             <Main>
                 <Image src={book} alt="" />
-                <div>
+                <div >
                     <strong>O Hobbit</strong>
                     <span>J.R.R. Tolkien</span>
-                    <p>Semper et sapien proin vitae nisi. Feugiat neque integer donec et aenean posuere amet ultrices. Cras fermentum id pulvinar varius leo a in. Amet libero pharetra nunc elementum fringilla velit ipsum. Sed vulputate massa velit nibhkk kkkkkkkkkkkkkk kkkkkkkkkkkkk kkkkkk kkkkkkkkkkkkkkkkkk kkkkkkkk kkkkkkkkk kkkkkkk kkkkkkk kkkk</p>
+                    <p>Semper et sapien proin vitae nisi. Feugiat neque integer donec et aenean posuere amet ultrices. Cras fermentum id pulvinar varius leo a in. Amet libero pharetra nunc elementum fringilla velit ipsum. Sed vulputate massa velit nibhkk kkkkkkkkkkkkkk zgdgzdg dfhdfs dfhdhdh</p>
                 </div>
             </Main>
         </CardContainer>

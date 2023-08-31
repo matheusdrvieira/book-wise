@@ -4,10 +4,11 @@ export const ContainerHome = styled("div", {
     height: "100vh",
 
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "space-between",
 
-    padding: "$4",
+    gap: "$8",
+    padding: "$4 5rem $4 $4",
 })
 
 export const MainMenu = styled("div", {
@@ -113,5 +114,63 @@ export const ButtonMenu = styled("button", {
 
             background: "$gradient-vertical",
         },
+    },
+})
+
+export const Main = styled("main", {
+    width: "100%",
+    display: "flex",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    gap: "$8",
+
+    ".title": {
+        display: "flex",
+        alignItems: "center",
+        gap: "$2",
+
+        h2: {
+            fontSize: "$2xl",
+            fontWeight: "$bold",
+            lineHeight: "$short",
+        }
+    },
+
+    section: {
+        display: "flex",
+        justifyContent: "space-around",
+        gap: "$8",
+
+        ".box": {
+            display: "flex",
+            flexDirection: "column",
+            gap: "$3",
+
+            p: {
+                fontSize: "$sm",
+                fontWeight: "$regular",
+                lineHeight: "$short",
+
+                color: "$gray100"
+            },
+
+            span: {
+                display: "flex",
+                alignItems: "center",
+
+                fontSize: "$sm",
+                fontWeight: "$regular",
+                lineHeight: "$bold",
+
+                cursor: "pointer",
+
+                color: "$purple100"
+            },
+
+            ".info": {
+                display: "flex",
+                justifyContent: "space-between",
+            }
+        }
     },
 })

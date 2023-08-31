@@ -1,7 +1,7 @@
 import { styled } from "@stitches/react";
 
 export const CardContainer = styled("div", {
-    width: "38rem",
+    minWidth: "38rem",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
@@ -11,9 +11,17 @@ export const CardContainer = styled("div", {
     borderRadius: "$md",
     background: "$gray700",
 
+    cursor: "pointer",
+    border: "2px solid $gray700",
+
     ".rating": {
         display: "flex",
         alignItems: "center",
+    },
+
+    "&:hover": {
+        border: "2px solid $gray500",
+        background: "$gray600",
     }
 })
 
@@ -102,8 +110,8 @@ export const Main = styled("div", {
 
             WebkitLineClamp: "4",
 
+            color: "$gray300",
 
-            color: "$gray300"
-        }
+        },
     }
 })
