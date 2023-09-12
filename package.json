@@ -2,29 +2,39 @@
   "name": "book-wise",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "npx prisma db seed"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.10",
+    "@prisma/client": "^5.2.0",
     "@radix-ui/react-dialog": "^1.0.4",
     "@stitches/react": "^1.2.8",
-    "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "@types/react-scroll": "^1.8.7",
+    "@types/uuid": "^9.0.3",
+    "axios": "^1.5.0",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "keen-slider": "^6.8.6",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.2.2"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/react-scrollbar": "^0.5.3"
+    "@types/node": "^20.6.0",
+    "@types/react-scrollbar": "^0.5.3",
+    "prisma": "^5.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }
