@@ -4,7 +4,8 @@ export const CardContainer = styled("div", {
     minWidth: "20rem",
     display: "flex",
     alignItems: "center",
-    gap: "1.25rem",
+
+    gap: "$5",
     padding: "$6",
 
     borderRadius: "$md",
@@ -24,35 +25,27 @@ export const CardContainer = styled("div", {
     }
 })
 
-export const Main = styled("div", {
+export const Main = styled("main", {
     display: "flex",
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "space-between",
     flexDirection: "column",
     gap: "$8",
 
     ".infoBook": {
         strong: {
-            fontSize: "$4",
+            fontSize: "$md",
             fontWeight: "$bold",
             lineHeight: "$short",
-
             color: "$gray100"
         },
 
         span: {
             display: "block",
-
             fontSize: "$sm",
             fontWeight: "$regular",
             lineHeight: "$base",
-
             color: "$gray400"
         }
-    },
-
-    ".rating": {
-        display: "flex",
-        alignItems: "center",
     },
 })

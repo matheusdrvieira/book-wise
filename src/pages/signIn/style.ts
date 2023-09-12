@@ -4,8 +4,8 @@ export const ContainerSignIn = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: "$4",
 
+    gap: "$4",
     padding: "$4",
 
     img: {
@@ -25,7 +25,6 @@ export const Login = styled("div", {
         fontSize: "$2xl",
         fontWeight: "$bold",
         lineHeight: "$short",
-
         color: "$gray100"
     },
 
@@ -36,7 +35,6 @@ export const Login = styled("div", {
         fontSize: "1rem",
         fontweight: "$regular",
         lineHeight: "$base",
-
         color: "$gray200"
     }
 })

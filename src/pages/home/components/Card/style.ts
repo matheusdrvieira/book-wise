@@ -14,11 +14,6 @@ export const CardContainer = styled("div", {
     cursor: "pointer",
     border: "2px solid $gray700",
 
-    ".rating": {
-        display: "flex",
-        alignItems: "center",
-    },
-
     "&:hover": {
         border: "2px solid $gray500",
         background: "$gray600",
@@ -30,6 +25,8 @@ export const Header = styled("div", {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+
+    marginBottom: "$8",
 })
 
 export const UserInfo = styled("div", {
@@ -66,17 +63,52 @@ export const UserInfo = styled("div", {
     }
 })
 
+export const P1 = styled("p", {
+    ontSize: "$sm",
+    fontWeight: "$regular",
+    lineHeight: "$base",
+
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+
+    WebkitLineClamp: "4",
+
+    color: "$gray300",
+})
+
+export const P2 = styled("p", {
+    fontSize: "$sm",
+    fontWeight: "$regular",
+    lineHeight: "$base",
+
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+
+    WebkitLineClamp: "2",
+
+    color: "$gray300",
+})
+
 export const Main = styled("div", {
     display: "flex",
     alignItems: "center",
     gap: "$5",
 
-    marginTop: "$8",
-
     img: {
         width: "6.75rem",
         height: "9.5rem",
     },
+})
+
+export const Box = styled("div", {
+    display: "flex",
+    alignItems: "flex-start",
 
     div: {
         strong: {
@@ -87,31 +119,26 @@ export const Main = styled("div", {
             color: "$gray100"
         },
 
-        span: {
+        ".date": {
             display: "block",
+            marginBottom: "$3",
+
+            fontSize: "$sm",
+            fontWeight: "$regular",
+            lineHeight: "$base",
+
+            color: "$gray400",
+        },
+
+        ".author": {
+            display: "block",
+            marginBottom: "$6",
 
             fontSize: "$sm",
             fontWeight: "$regular",
             lineHeight: "$base",
 
             color: "$gray400"
-        },
-
-        p: {
-            fontSize: "$sm",
-            fontWeight: "$regular",
-            lineHeight: "$base",
-
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-
-            WebkitLineClamp: "4",
-
-            color: "$gray300",
-
         },
     }
 })

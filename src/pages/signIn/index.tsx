@@ -1,7 +1,7 @@
 import { ContainerSignIn, Login } from "./style";
 import img from "../../assets/Image.svg";
 import Image from "next/image";
-import { ButtonSignIn } from "../../components/ButtonSignIn";
+import { ButtonSignIn } from "./components/ButtonSignIn";
 
 export default function SignIn() {
 
