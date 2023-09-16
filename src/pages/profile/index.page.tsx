@@ -2,12 +2,29 @@ import { ContainerProfile, Box, Header, Main } from "./style";
 import { CardProfile } from "./components/CardProfile";
 import { Menu } from "../../components/Menu";
 import { CaretLeft, User, } from "@phosphor-icons/react";
-import { BOOK_API } from "../../service/static.api";
-import { BookProps } from "@/interface";
+import { BookProps, InfoProfileProps } from "@/interface";
 import { Input } from "@/components/Input";
 import { InfoProfile } from "./components/InfoProfile";
+import { BookWiseClient } from "@/client/BookWiseClient";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "@/context";
 
 export default function Profile() {
+    const client = new BookWiseClient();
+    const [infoProfile, setInfoProfile] = useState<InfoProfileProps>({} as InfoProfileProps);
+    const { booksRatingByUserId } = useContext(Context)
+
+    useEffect(() => {
+        async function fetchInfoProfile() {
+            const response = await client.fetchInfoProfile()
+            setInfoProfile(response);
+        }
+
+        fetchInfoProfile();
+    }, []);
+
+    console.log(infoProfile);
+
 
     const isAnotherUser = true
     return (
@@ -25,17 +42,17 @@ export default function Profile() {
                     </Header>}
                 <Main>
                     <section>
-                        <Input />
-                        {BOOK_API.map((book: BookProps) => {
+                        <Input placeholder="Buscar livro avaliado" />
+                        {booksRatingByUserId.map((book: BookProps) => {
                             return (
                                 <CardProfile
-                                    data={book}
-                                />
+                                    key={book.id}
+                                    data={book} />
                             )
                         })}
                     </section>
                     <section>
-                        <InfoProfile />
+                        <InfoProfile data={infoProfile} />
                     </section>
                 </Main>
             </Box>

@@ -4,20 +4,30 @@ import { Categories } from "./components/Categories";
 import { Binoculars } from "@phosphor-icons/react";
 import { Input } from "@/components/Input";
 import { CardExplorer } from "./components/CardExplorer";
-import { BOOK_API } from "@/service/static.api";
 import { BookProps } from "@/interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog"
 import { ModalDetails } from "./components/ModalDetails";
+import { BookWiseClient } from "@/client/BookWiseClient";
 
 export default function Explorer() {
     const [booksDetails, setBooksDetails] = useState<BookProps>({} as BookProps);
+    const [popularBooks, setPopularBooks] = useState<BookProps[]>([]);
+    const client = new BookWiseClient();
 
-    const getBookDetails = (id: number) => {
-        const book = BOOK_API.find((book: BookProps) => book.id === id)
-
-        if (book) setBooksDetails(book)
+    async function fetchBookDetails(id: number) {
+        const response = await client.fetchBookDetails(id);
+        setBooksDetails(response);
     }
+
+    useEffect(() => {
+        async function fetchPopularBooks() {
+            const response = await client.fetchPopularBooks();
+            setPopularBooks(response);
+        }
+
+        fetchPopularBooks();
+    }, []);
 
     return (
         <ContainerExplorer>
@@ -28,21 +38,22 @@ export default function Explorer() {
                         <Binoculars size={32} color="#50B2C0" weight="bold" />
                         <h1>Explorar</h1>
                     </div>
-                    <Input />
+                    <Input placeholder="Buscar livro ou autor" />
                 </Header>
                 <Categories />
                 <section>
-                    {BOOK_API.map((book: BookProps) => {
+                    {popularBooks.map((book: BookProps) => {
                         return (
                             <Dialog.Root key={book.id}>
                                 <Dialog.Trigger asChild>
                                     <CardExplorer
                                         data={book}
-                                        onClick={() => getBookDetails(book.id)} />
+                                        onClick={() => fetchBookDetails(book.id)} />
                                 </Dialog.Trigger>
-                                <ModalDetails
-                                    key={booksDetails.id}
-                                    data={booksDetails} />
+                                {booksDetails.id &&
+                                    <ModalDetails
+                                        key={booksDetails.id}
+                                        data={booksDetails} />}
                             </Dialog.Root>
                         )
                     })}

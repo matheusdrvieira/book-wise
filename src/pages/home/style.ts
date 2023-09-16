@@ -42,12 +42,20 @@ export const Section = styled("section", {
     flexDirection: "column",
     gap: "$4",
 
+    ".cardWrapper": {
+        display: "flex",
+        flexDirection: "column",
+        gap: "$4",
+        marginBottom: "$10",
+    },
+
     p: {
         fontSize: "$sm",
         fontWeight: "$regular",
         lineHeight: "$short",
-        color: "$gray100"
+        color: "$gray100",
     },
+
 
     b: {
         display: "flex",

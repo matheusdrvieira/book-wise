@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "npx prisma db seed"
+    "seed": "npx prisma db seed",
+    "migrate": "npx prisma migrate dev"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.10",
@@ -26,6 +27,7 @@
     "eslint-config-next": "13.4.19",
     "keen-slider": "^6.8.6",
     "next": "13.4.19",
+    "next-auth": "^4.23.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "uuid": "^9.0.1"

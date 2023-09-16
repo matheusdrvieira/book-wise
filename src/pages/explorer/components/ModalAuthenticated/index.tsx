@@ -1,6 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog"
 import { Button, ButtonClose, Content, Overlay } from "./style"
 import { GithubLogo, GoogleLogo, X } from "@phosphor-icons/react"
+import { signIn } from "next-auth/react"
 
 export function ModalAuthenticated() {
 
@@ -16,7 +17,7 @@ export function ModalAuthenticated() {
                 </header>
                 <div>
                     <GoogleLogo size={32} color="#8D95AF" weight="fill" />
-                    <Button>Entrar com Google</Button>
+                    <Button onClick={() => signIn("google")}>Entrar com Google</Button>
                 </div>
                 <div>
                     <GithubLogo size={24} color="#F8F9FC" weight="duotone" />

@@ -6,11 +6,11 @@ import { CardExplorerProps } from "@/interface";
 
 export const CardExplorer = React.forwardRef((props: CardExplorerProps, ref: any) => {
 
-    const stars = Rating(props.data.rating);
+    const stars = Rating(props.data.ratings);
     return (
-        <CardContainer ref={ref} {...props} >
-            <Image src={props.data.image_url} alt="imagem do livro" />
-            <Checked active={props.data.isRead}>LIDO</Checked>
+        <CardContainer ref={ref} {...props}>
+            <img src={props.data.cover_url} alt="imagem do livro" />
+            <Checked active={props.data.ratings >= 0}>LIDO</Checked>
             <Main>
                 <div className="infoBook">
                     <strong>{props.data.name}</strong>

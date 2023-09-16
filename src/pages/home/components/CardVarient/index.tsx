@@ -5,10 +5,10 @@ import { Rating } from "@/utils/rating";
 
 export function CardVarient(props: { data: BookProps }) {
 
-    const stars = Rating(props.data.rating);
+    const stars = Rating(props.data.ratings);
     return (
         <CardContainer>
-            <Image src={props.data.image_url} alt="" />
+            <img src={`http://localhost:3000/${props.data.cover_url}`} alt="Imagem do Livro" />
             <Main>
                 <div className="infoBook">
                     <strong>{props.data.name}</strong>

@@ -1,40 +1,31 @@
-import { Star } from "@phosphor-icons/react";
-import { CardContainer, Header, UserInfo, Main, P1, P2, Box } from "./style";
+import { CardContainer, Header, UserInfo, Main, Box } from "./style";
 import Image from "next/image";
 import { BookProps } from "@/interface";
 import { Rating } from "@/utils/rating";
 
-export function Card(props: { data: BookProps, lastread: boolean }) {
+export function Card(props: { data: BookProps }) {
 
-    const stars = Rating(props.data.rating);
+    const stars = Rating(props.data.ratings);
     return (
         <CardContainer>
-            {!props.lastread ?
-                <Header>
-                    <UserInfo>
-                        <img src="https://github.com/matheusvieira14.png" />
-                        <div>
-                            <strong>Jaxson Dias</strong>
-                            <span>Hoje</span>
-                        </div>
-                    </UserInfo>
-                    <div className="rating">{stars}</div>
-                </Header> : null}
+            <Header>
+                <UserInfo>
+                    <img src="https://github.com/matheusvieira14.png" />
+                    <div>
+                        <strong>Jaxson Dias</strong>
+                        <span>Hoje</span>
+                    </div>
+                </UserInfo>
+                <div className="rating">{stars}</div>
+            </Header>
             <Main>
-                <Image src={props.data.image_url} alt="" />
+                <img src={`http://localhost:3000/${props.data.cover_url}`} alt="" />
                 <Box>
-                    <div >
-                        {props.lastread ?
-                            <span className="date">Há 2 dias</span> : null}
+                    <div>
                         <strong>{props.data.name}</strong>
                         <span className="author">{props.data.author}</span>
-                        {!props.lastread ?
-                            <P1>{props.data.description}</P1> :
-                            <P2>{props.data.description}</P2>}
                     </div>
-
-                    {props.lastread ?
-                        <div className="rating">{stars}</div> : null}
+                    <p>{props.data.summary}</p>
                 </Box>
             </Main>
         </CardContainer>

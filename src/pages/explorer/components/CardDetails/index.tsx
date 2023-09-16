@@ -1,16 +1,16 @@
 import { CardContainer, Main, Section, Footer } from "./style";
-import Image from "next/image";
-import { BookProps } from "@/interface";
+import { BookProps, CategoriesProps } from "@/interface";
 import { Rating } from "@/utils/rating";
 import { BookOpen, BookmarkSimple } from "@phosphor-icons/react";
 
 export function CardDetails(props: { data: BookProps }) {
+    const categories = props.data.categories.join(' | ');
+    const stars = Rating(props.data.ratings);
 
-    const stars = Rating(props.data.rating);
     return (
         <CardContainer>
             <Main>
-                <Image src={props.data.image_url} alt="imagem do livro" />
+                <img src={props.data.cover_url} alt="imagem do livro" />
                 <Section>
                     <div className="infoBook">
                         <strong>{props.data.name}</strong>
@@ -18,7 +18,7 @@ export function CardDetails(props: { data: BookProps }) {
                     </div>
                     <div className="assessment">
                         <div className="rating">{stars}</div>
-                        <span>3 avaliações</span>
+                        <span>{props.data.numberOfRatings} avaliações</span>
                     </div>
                 </Section>
             </Main>
@@ -26,15 +26,15 @@ export function CardDetails(props: { data: BookProps }) {
                 <div className="boxFooter">
                     <BookmarkSimple size={24} color="#50B2C0" weight="bold" />
                     <div>
-                        <p>Páginas</p>
-                        <strong>Computação, educação</strong>
+                        <p>Categoria</p>
+                        <strong>{categories}</strong>
                     </div>
                 </div>
                 <div className="boxFooter">
                     <BookOpen size={24} color="#50B2C0" weight="bold" />
                     <div>
-                        <p>Categoria</p>
-                        <strong>160</strong>
+                        <p>Páginas</p>
+                        <strong>{props.data.total_pages}</strong>
                     </div>
                 </div>
             </Footer>

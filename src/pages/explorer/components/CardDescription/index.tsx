@@ -4,7 +4,7 @@ import { BookProps } from "@/interface";
 
 export function CardDescription(props: { data: BookProps }) {
 
-    const stars = Rating(props.data.rating);
+    const stars = Rating(props.data.ratings);
     return (
         <CardContainer>
             <Header>

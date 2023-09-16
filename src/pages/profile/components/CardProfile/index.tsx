@@ -5,13 +5,13 @@ import { Rating } from "@/utils/rating";
 
 export function CardProfile(props: { data: BookProps }) {
 
-    const stars = Rating(props.data.rating);
+    const stars = Rating(props.data.ratings);
     return (
         <CardContainer>
-            <span>{props.data.updated_at}</span>
+            <span>{props.data.created_at}</span>
             <Main>
                 <Section>
-                    <Image src={props.data.image_url} alt="" />
+                    <img src={props.data.cover_url} alt="" />
                     <Box>
                         <div className="info">
                             <strong>{props.data.name}</strong>
@@ -20,7 +20,7 @@ export function CardProfile(props: { data: BookProps }) {
                         <div className="rating">{stars}</div>
                     </Box>
                 </Section>
-                <p>{props.data.description}</p>
+                <p>{props.data.summary}</p>
             </Main>
         </CardContainer>
     )

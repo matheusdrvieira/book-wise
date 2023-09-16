@@ -29,9 +29,18 @@ export const BaseButton = styled("div", {
 
     fontSize: "$md",
     fontWeight: "$bold",
-    lineHeight: "0",
 
     color: "$gray200",
+
+    span: {
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+
+        display: "-webkit-box",
+        WebkitBoxOrient: "vertical",
+
+        WebkitLineClamp: "1",
+    },
 
     button: {
         cursor: "pointer",
