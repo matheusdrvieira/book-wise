@@ -4,7 +4,7 @@ import { Categories } from "./components/Categories";
 import { Binoculars } from "@phosphor-icons/react";
 import { Input } from "@/components/Input";
 import { CardExplorer } from "./components/CardExplorer";
-import { BookProps } from "@/interface";
+import { BookProps, SearchFormData } from "@/interface";
 import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog"
 import { ModalDetails } from "./components/ModalDetails";
@@ -14,20 +14,21 @@ export default function Explorer() {
     const [booksDetails, setBooksDetails] = useState<BookProps>({} as BookProps);
     const [popularBooks, setPopularBooks] = useState<BookProps[]>([]);
     const client = new BookWiseClient();
+    const [searchValue, setSearchValue] = useState("");
+
+    useEffect(() => {
+        if (searchValue === "") fetchPopularBooks({ search: "" })
+    }, [searchValue]);
+
+    const fetchPopularBooks = async (data: SearchFormData) => {
+        const response = await client.fetchPopularBooks(data);
+        setPopularBooks(response);
+    };
 
     async function fetchBookDetails(id: number) {
         const response = await client.fetchBookDetails(id);
         setBooksDetails(response);
     }
-
-    useEffect(() => {
-        async function fetchPopularBooks() {
-            const response = await client.fetchPopularBooks();
-            setPopularBooks(response);
-        }
-
-        fetchPopularBooks();
-    }, []);
 
     return (
         <ContainerExplorer>
@@ -38,7 +39,7 @@ export default function Explorer() {
                         <Binoculars size={32} color="#50B2C0" weight="bold" />
                         <h1>Explorar</h1>
                     </div>
-                    <Input placeholder="Buscar livro ou autor" />
+                    <Input placeholder="Buscar livro ou autor" onSubmit={fetchPopularBooks} setSearchValue={setSearchValue} />
                 </Header>
                 <Categories />
                 <section>

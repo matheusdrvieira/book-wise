@@ -1,4 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { SearchSchema } from "@/components/Input";
+import { ButtonHTMLAttributes, InputHTMLAttributes } from "react";
+import * as zod from "zod";
 
 export interface BookProps {
     id: number;
@@ -46,10 +48,18 @@ export interface UserProps {
     created_at: string;
 }
 
-export interface ContextProviderProps {
-    children: ReactNode
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    onSubmit: () => void;
+    setSearchValue: any
 }
 
-export interface ContextType {
-    booksRatingByUserId: BookProps[]
-}
+export type SearchFormData = zod.infer<typeof SearchSchema>
+
+// export interface ContextProviderProps {
+//     children: ReactNode
+// }
+
+// export interface ContextType {
+//     setSearchValue: (search: string) => void;
+//     searchValue: any
+// }

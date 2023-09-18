@@ -1,6 +1,6 @@
 import { styled } from "@stitches/react";
 
-export const InputContainer = styled("div", {
+export const InputContainer = styled("form", {
     minWidth: "27.0625rem",
     display: "flex",
     alignItems: "center",
@@ -20,6 +20,18 @@ export const InputContainer = styled("div", {
 
         "&::placeholder": {
             color: "$gray400"
+        }
+    },
+
+    button: {
+        display: "flex",
+        alignItems: "center",
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+
+        svg: {
+            lineHeight: "0"
         }
     }
 })

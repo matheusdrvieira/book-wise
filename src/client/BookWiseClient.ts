@@ -26,17 +26,18 @@ export class BookWiseClient {
 
     //usando na pagina Home e na Explorer 
 
-    async fetchPopularBooks() {
+    async fetchPopularBooks(data?: any) {
+        const value = data ? data.search : ""
         const limit = this.router?.pathname === "/home" ? 4 : Number.MAX_SAFE_INTEGER
-        const response = await axios.get(`api/popularBooks?limit=${limit}&search=${""}`)
+        const response = await axios.get(`api/popularBooks?limit=${limit}&search=${value}`)
 
         return response.data
     }
 
     //Pagina Profile
 
-    async fetchBooksRatingByUserId() {
-        const response = await axios.get(`api/booksRatingByUserId?userId=${"c296c6c0-5c59-40dd-aa8a-ef2b015b7502"}&search=${""}`)
+    async fetchBooksRatingByUserId(data: any) {
+        const response = await axios.get(`api/booksRatingByUserId?userId=${"c296c6c0-5c59-40dd-aa8a-ef2b015b7502"}&search=${data.search}`)
 
         return response.data
     }
@@ -50,7 +51,7 @@ export class BookWiseClient {
     //Componente Menu
 
     async fetchUserById() {
-        const response = await axios.get(`api/user?userId=${"c296c6c0-5c59-40dd-aa8a-ef2b015b7502"}`)
+        const response = await axios.get(`api/user?userId=${"c296c6c0-5c59-40dd-aa8a-ef2b015b7502"} `)
 
         return response.data
     }

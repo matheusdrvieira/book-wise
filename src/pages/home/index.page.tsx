@@ -3,21 +3,29 @@ import { CaretRight, ChartLineUp, } from "@phosphor-icons/react";
 import { Card } from "./components/Card";
 import { CardVarient } from "./components/CardVarient";
 import { Menu } from "../../components/Menu";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BookProps } from "@/interface";
 import { CardLastRead } from "./components/CardLastRead";
 import { BookWiseClient } from "../../client/BookWiseClient"
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { Context } from "@/context";
 
 export default function Home() {
     const [firstBook, setFirstBook] = useState<BookProps | null>({} as BookProps);
     const [books, setBooks] = useState<BookProps[]>([]);
-    const { booksRatingByUserId } = useContext(Context)
+    const [popularBooks, setPopularBooks] = useState<BookProps[]>([]);
     const session = useSession();
     const router = useRouter();
     const client = new BookWiseClient(router);
+
+    useEffect(() => {
+        async function fetchPopularBooks() {
+            const response = await client.fetchPopularBooks();
+            setPopularBooks(response);
+        }
+
+        fetchPopularBooks();
+    }, []);
 
     useEffect(() => {
         async function fetchRecentlyReviewedBook() {
@@ -75,7 +83,7 @@ export default function Home() {
                             <p>Livros populares</p>
                             <b onClick={() => router.push("/explorer")}>Ver todos <CaretRight size={16} weight="bold" /></b>
                         </div>
-                        {booksRatingByUserId.map((book: BookProps) => {
+                        {popularBooks.map((book: BookProps) => {
                             return (
                                 <CardVarient
                                     key={book.id}
